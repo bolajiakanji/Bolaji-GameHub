@@ -3,7 +3,7 @@ import useGenre from "../hooks/useGenre";
 import getCroppedImageUrl from "../services/image-url";
 
 const GenreList = () => {
-  const { data, error, isLoading } = useGenre();
+  const { data, error } = useGenre();
   return (
     <>
       {error && <Text>{error}</Text>}
