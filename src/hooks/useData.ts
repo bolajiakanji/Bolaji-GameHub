@@ -3,21 +3,29 @@ import { useState, useEffect } from "react";
 import apiClient from "../services/api-client";
 
 interface FetchResponse<T> {
-    count: number;
-    results: T[];
+  count: number;
+  results: T[];
 }
 
-export default function useData<T>(endPoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) {
-    const [data, setData] = useState<T[]>([]);
-    const [error, setError] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-  
-    useEffect(() => {
+export default function useData<T>(
+  endPoint: string,
+  requestConfig?: AxiosRequestConfig,
+  deps?: any[]
+) {
+  const [data, setData] = useState<T[]>([]);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(
+    () => {
       const controller = new AbortController();
-  
+
       setIsLoading(true);
       apiClient
-        .get<FetchResponse<T>>(endPoint, { signal: controller.signal, ...requestConfig })
+        .get<FetchResponse<T>>(endPoint, {
+          signal: controller.signal,
+          ...requestConfig,
+        })
         .then((res) => {
           setData(res.data.results);
           setIsLoading(false);
@@ -27,9 +35,10 @@ export default function useData<T>(endPoint: string, requestConfig?: AxiosReques
           setError(err.message);
           setIsLoading(false);
         });
-  
+
       return () => controller.abort();
-    }, deps ? [...deps] : []);
-    return { data, error, isLoading };
-  }
-  
+    },
+    deps ? [...deps] : []
+  );
+  return { data, error, isLoading };
+}
