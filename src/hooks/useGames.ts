@@ -14,9 +14,7 @@ export interface Game {
   metacritic: number;
 }
 
-export default function useGames(
-  gameQuery: GameQuery
-) {
+export default function useGames(gameQuery: GameQuery) {
   return useData<Game>(
     "/games",
     {
@@ -24,7 +22,8 @@ export default function useGames(
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
         ordering: gameQuery.sortOrder,
-      }
+        search: gameQuery.searchText,
+      },
     },
     [gameQuery]
   );
