@@ -10,6 +10,7 @@ import {
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
+import Emoji from "./Emoji";
 
 interface Props {
   game: Game;
@@ -19,7 +20,7 @@ const GameCard = ({ game }: Props) => {
     <Card >
       <Image src={getCroppedImageUrl(game.background_image)} />
       <CardBody>
-        <Heading fontSize="2xl">{game.name}</Heading>
+        
         <Flex justifyContent="space-between">
         <HStack margin={1}>
           {game.parent_platforms.map(({ platform }) => (
@@ -28,6 +29,8 @@ const GameCard = ({ game }: Props) => {
         </HStack>
                <CriticScore score={game.metacritic} />
                </Flex>
+               <Heading fontSize="2xl">{game.name} <Emoji rating={game.rating_top} /></Heading>
+
  
       </CardBody>
     </Card>
