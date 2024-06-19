@@ -1,6 +1,7 @@
 import {
   Button,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
@@ -19,6 +20,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, error, isLoading } = useGenre();
   return (
     <>
+  <Heading fontSize='4xl' marginY={5}> Genres</Heading>
       {isLoading && <Spinner />}
       {error && <Text>{error}</Text>}
       <List>
@@ -28,11 +30,14 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
               <Image
                 boxSize="32px"
                 borderRadius={8}
+                objectFit='cover'
                 src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
                 fontSize="lg"
                 variant="link"
+                whiteSpace='normal'
+                textAlign='left'
                 onClick={() => onSelectGenre(genre)}
                 fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
               >
