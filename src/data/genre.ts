@@ -1,4 +1,4 @@
-const data = [
+const genreData = [
     {
       "id": 4,
       "name": "Action",
@@ -856,4 +856,4 @@ const data = [
     }
 ]
   
-export default data
+export default genreData
