@@ -19,6 +19,7 @@ export interface GameQuery {
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(true);
 
   const handleSelctedGenre = (genre: Genre) =>
     setGameQuery({ ...gameQuery, genre });
@@ -39,16 +40,19 @@ function App() {
       <GridItem area="nav">
         <NavBar
           onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+          onClickHamburgerMenu={() =>
+            setIsHamburgerMenuOpen(!isHamburgerMenuOpen)} isHamburgerMenuOpen={isHamburgerMenuOpen}
+          
         />
       </GridItem>
-      <Show above="lg">
+      {isHamburgerMenuOpen &&
         <GridItem area="aside" paddingX={5}>
           <GenreList
             onSelectGenre={handleSelctedGenre}
             selectedGenre={gameQuery.genre}
           />
         </GridItem>
-      </Show>
+      }
       <GridItem area="main">
         <Box paddingX={3}>
           <GameHeading gameQuery={gameQuery} />
