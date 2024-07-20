@@ -4,7 +4,6 @@ import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
 
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { useEffect } from "react";
 
 interface Props {
   onSearch: (searchText: string) => void;
