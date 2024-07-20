@@ -29,11 +29,12 @@ function App() {
   return (
     <Grid
       templateAreas={{
-        base: `"nav" "main"`,
-        lg: `"nav nav" "aside main"`,
+        // base: `"nav" "main"`,
+        
+        base: `"nav nav" "aside main"`,
       }}
       templateColumns={{
-        base: "1fr",
+        base: "250px 1fr",
         lg: "250px 1fr",
       }}
     >
@@ -45,16 +46,27 @@ function App() {
           
         />
       </GridItem>
-      {isHamburgerMenuOpen &&
-        <GridItem area="aside" paddingX={5}>
+      {
+        <GridItem area="aside" pos={{
+          base: 'absolute',
+          lg: 'relative'
+        }} top={{ base: '4.2em', lg: '0'}} paddingLeft={3.5} opacity={{base: isHamburgerMenuOpen ? 0 : 1,lg: 1,}}>
+          <Box 
+           left='' zIndex='2'>
           <GenreList
             onSelectGenre={handleSelctedGenre}
             selectedGenre={gameQuery.genre}
-          />
+            />
+            </Box>
         </GridItem>
       }
-      <GridItem area="main">
-        <Box paddingX={3}>
+      <GridItem area="main" pos={{
+          base: 'absolute',
+          lg: 'relative'
+        }} top={{ base: '4.2em', lg: '0'}} opacity={{ base: isHamburgerMenuOpen ? 1 : 0.02, lg: 1}}
+
+       paddingX={3} marginTop={['px', '0px']} width={{base: '100%', lg: 'ifr'}}>
+        <Box paddingX=''  left='0px' width=''>
           <GameHeading gameQuery={gameQuery} />
           <SimpleGrid columns={{ sm: 1, lg: 2 }} spacing={5} marginBottom={5}>
             {/* <HStack spacing={5} marginBottom={5}> */}

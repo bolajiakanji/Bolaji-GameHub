@@ -21,7 +21,7 @@ const NavBar = ({
   onClickHamburgerMenu,
 }: Props & HamburgerProps) => {
   return (
-    <HStack padding="10px" z-index={1}>
+    <HStack padding="10px" z-index={5}>
       <Image src={logo} boxSize="60px" />
       <SearchInput onSearch={onSearch} />
 
@@ -40,9 +40,9 @@ const Icons = ({
   isHamburgerMenuOpen,
   onClickHamburgerMenu,
 }: HamburgerProps) => {
-  useEffect(() => {
-    onClickHamburgerMenu();
-  }, []);
+  // useEffect(() => {
+  //   onClickHamburgerMenu();
+  // }, []);
 
   return (
     <>

@@ -20,9 +20,9 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, error, isLoading } = useGenre();
   return (
     <>
-  <Heading fontSize='4xl' marginY={5}> Genres</Heading>
+  <Heading fontSize='4xl' marginBottom={5}> Genres</Heading>
       {isLoading && <Spinner />}
-      {error && <Text>{error}</Text>}
+      {error && <Text align='center'>{error}</Text>}
       <List>
         {data.map((genre) => (
           <ListItem key={genre.id} paddingBottom={3}>
