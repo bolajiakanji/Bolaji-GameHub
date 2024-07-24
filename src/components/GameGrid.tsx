@@ -15,7 +15,7 @@ const GameGrid = ({ selectedGameQuery }: Props) => {
   const { data, error, isLoading, hasNextPage, fetchNextPage } =
     useGames(selectedGameQuery);
 
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const totalGamesCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
@@ -29,15 +29,17 @@ const GameGrid = ({ selectedGameQuery }: Props) => {
       next={() => fetchNextPage()}
       loader={<Spinner />}
       style={{
-        padding: "20px",
-        color: "green",
+        
+        color: "dodgerblue",
         textAlign: "center",
-        display: "block",
-        rowGap: '3d0px'
+        
+      
+        
+        
       }}
     >
       {" "}
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={4}>
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={4}>
         {isLoading &&
           skeletons.map((skeleton) => (
             <GameCardContainer key={skeleton}>
