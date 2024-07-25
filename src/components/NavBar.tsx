@@ -5,9 +5,7 @@ import SearchInput from "./SearchInput";
 
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 
-interface Props {
-  onSearch: (searchText: string) => void;
-}
+
 
 interface HamburgerProps {
   isHamburgerMenuOpen: boolean;
@@ -15,14 +13,14 @@ interface HamburgerProps {
 }
 
 const NavBar = ({
-  onSearch,
+  
   isHamburgerMenuOpen,
   onClickHamburgerMenu,
-}: Props & HamburgerProps) => {
+}: & HamburgerProps) => {
   return (
     <HStack padding="10px" z-index={5}>
       <Image src={logo} boxSize="60px" />
-      <SearchInput onSearch={onSearch} />
+      <SearchInput  />
 
       <ColorModeSwitch />
 <Show below="lg">     <Icons

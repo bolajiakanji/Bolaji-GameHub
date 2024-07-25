@@ -8,21 +8,12 @@ import NavBar from "./components/NavBar";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 
-export interface GameQuery {
-  genreId?: number ;
-  platformId?: number;
-  sortOrder: string;
-  searchText: string;
-}
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(true);
 
-  const handleSelctedGenre = (genreId: number) =>
-    setGameQuery({ ...gameQuery, genreId });
-  const handleSelctedPlatform = (platformId: number) =>
-    setGameQuery({ ...gameQuery, platformId });
+  
 
   return (
     <Grid
@@ -38,7 +29,7 @@ function App() {
     >
       <GridItem area="nav">
         <NavBar
-          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+          
           onClickHamburgerMenu={() =>
             setIsHamburgerMenuOpen(!isHamburgerMenuOpen)
           }
@@ -58,8 +49,7 @@ function App() {
         >
           <Box>
             <GenreList
-              onSelectGenre={handleSelctedGenre}
-              selectedGenreId={gameQuery.genreId}
+              
             />
           </Box>
         </GridItem>
@@ -77,23 +67,15 @@ function App() {
         width={{ base: "100%", lg: "ifr" }}
       >
         <Box paddingX="" left="0px" width="">
-          <GameHeading gameQuery={gameQuery} />
+          <GameHeading  />
           <SimpleGrid columns={{ sm: 1, lg: 2 }} spacing={5} marginBottom={5}>
             {/* <HStack spacing={5} marginBottom={5}> */}
-            <PlatformSelector
-              onSelectPlatform={handleSelctedPlatform}
-              selectedPlatformId={gameQuery.platformId}
-            />
-            <SortSelector
-              onSelectSortOrders={(sortOrder: string) =>
-                setGameQuery({ ...gameQuery, sortOrder })
-              }
-              sortOrder={gameQuery.sortOrder}
-            />
+            <PlatformSelector />
+            <SortSelector />
           </SimpleGrid>
           {/* </HStack> */}
         </Box>
-        <GameGrid selectedGameQuery={gameQuery} />
+        <GameGrid />
       </GridItem>
     </Grid>
   );
