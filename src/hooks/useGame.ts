@@ -3,8 +3,6 @@ import APIClient from "../services/api-client";
 import  Game  from "../entities/Game";
 import ms from "ms";
 
-
-
 const apiClient = new APIClient<Game>('/games')
 
 const useGame = (slug: string) => useQuery({
